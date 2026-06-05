@@ -14,3 +14,13 @@ test('firt test heroku', async ({ page }) => {
   await expect(page.getByText('You logged into a secure area')).toBeVisible();
   await expect(page.locator('#flash')).toContainText('You logged into a secure area! ×');
 });
+
+test('second test heroku', async ({ page }) => {
+  await page.goto('https://the-internet.herokuapp.com/');
+  await page.getByRole('link', { name: 'Dropdown' }).click();
+  await expect(page.locator('#dropdown')).toBeVisible();
+  await expect(page.locator('#dropdown')).toContainText('Please select an option Option 1 Option 2');
+  await page.locator('#dropdown').selectOption('1');
+  await page.locator('#dropdown').selectOption('2');
+  await page.locator('html').click();
+});
