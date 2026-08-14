@@ -65,10 +65,10 @@ await elementLocator.click()
 }
 
 
-async confirmationAlert(elementLocator:Locator,page:Page,expect:Expect){
+async confirmationAlert(elementLocator:Locator,page:Page,expect:Expect,confirmationMssg:string){
 page.on('dialog',async(alert)=>{
 const alertMessage=alert.message();
-   expect(alertMessage).toEqual('Are you sure?')
+   expect(alertMessage).toEqual(confirmationMssg)
     
    await alert.accept();
 })
@@ -78,16 +78,16 @@ await elementLocator.click()
 
 
 
-async promptAlert(elementLocator:Locator,page:Page,expect:Expect){
-const promptMsg="Hey this is mohamed"
+async promptAlert(elementLocator:Locator,page:Page,expect:Expect,mssg:string,promptMsgLocator:Locator,promptMsg:string){
+
 page.on('dialog',async(alert)=>{
 const alertMessage=alert.message();
-   expect(alertMessage).toEqual('Type anything:')
+   expect(alertMessage).toEqual(mssg)
    await alert.accept(promptMsg);
 })
 
 await elementLocator.click()
-await expect(page.locator('[id="prompt-out"]')).toContainText(promptMsg)
+await expect(promptMsgLocator).toContainText(promptMsg)
 }
 
 

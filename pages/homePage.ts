@@ -36,6 +36,9 @@ private readonly usernameInputField:Locator = this.page.getByRole('textbox', {na
     private readonly simpleAlert :Locator=this.page.locator('[id="btn-alert"]')
     private readonly confirmationAlert :Locator=this.page.locator('[id="btn-confirm"]')
     private readonly promptAlert:Locator=this.page.locator('[id="btn-prompt"]')
+    private readonly confirmationMssg="Are you sure?"
+    private readonly mssg="Type anything:"
+     private readonly promptMsgLocator =this.page.locator('[id="prompt-out"]')
 
 
 
@@ -111,9 +114,9 @@ async performeSimpleAlert(){
    await this.actions.simpleAlert(this.simpleAlert,this.page,expect)
 }
 async performConfirmationAlert(){
-   await this.actions.confirmationAlert(this.confirmationAlert,this.page,expect)
+   await this.actions.confirmationAlert(this.confirmationAlert,this.page,expect,this.confirmationMssg)
 }
-async performPromptAlert(){
-   await this.actions.promptAlert(this.promptAlert,this.page,expect)
+async performPromptAlert(promptMsg:string){
+   await this.actions.promptAlert(this.promptAlert,this.page,expect,this.mssg,this.promptMsgLocator,promptMsg)
 }
 }

@@ -86,9 +86,9 @@ await loginPage.enterUserName(testData.validData.username)
 await loginPage.enterPassword(testData.validData.password,300)
 await loginPage.clickOnLoginBttn()
 await homePage.clickOnAlertSection()
-await homePage.performeSimpleAlert()
-await homePage.performConfirmationAlert()
-await homePage.performPromptAlert()
+ await homePage.performeSimpleAlert()
+ await homePage.performConfirmationAlert()
+await homePage.performPromptAlert('Hey this is mohamed')
 await page.waitForTimeout(5*1000)
 
 });
