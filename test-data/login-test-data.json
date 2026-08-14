@@ -1,0 +1,12 @@
+{
+    "validData":{
+"username":"trainer",
+"password":"selenium123"
+    },
+   "inValidData":{
+"username":"trainer123",
+"password":"selenium"
+    }
+
+
+}
